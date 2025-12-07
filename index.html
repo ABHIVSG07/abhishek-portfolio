@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Abhishek Gaikwad — Mechanical Design Portfolio</title>
+  <meta name="description" content="Portfolio of Abhishek — Mechanical Design, SolidWorks, CAD, Simulation" />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#98a0b3; --accent:#60a5fa; --glass: rgba(255,255,255,0.04);
+      --max-w:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#e6eef8;background:linear-gradient(180deg,#071022 0%, #07172a 60%);-webkit-font-smoothing:antialiased}
+    .wrap{max-width:var(--max-w);margin:32px auto;padding:24px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;color:#071022}
+    h1{margin:0;font-size:20px}
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-size:14px;padding:8px;border-radius:8px}
+    nav a:hover{color:var(--accent);background:var(--glass)}
+
+    .hero{display:grid;grid-template-columns:1fr 320px;gap:24px;margin-top:22px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:18px;box-shadow:0 6px 20px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    .intro h2{margin:0 0 8px 0;font-size:28px}
+    .intro p{color:var(--muted);margin:0 0 12px}
+    .cta{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:10px 14px;border-radius:9px;background:var(--accent);color:#071022;font-weight:600;border:none;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    .avatar{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+    .avatar .profile{width:100%;height:100%;border-radius:12px;background:linear-gradient(180deg,#0b1220, #081226);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:18px}
+    .profile svg{width:110px;height:110px}
+    .profile h3{margin:12px 0 0;color:#fff}
+    .profile p{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+    section{margin-top:22px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .project-card{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);min-height:140px}
+    .project-card h4{margin:0 0 6px}
+    .chip{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:12px;color:var(--muted);margin-right:8px}
+
+    footer{margin:28px 0 60px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* responsive */
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr 1fr}.wrap{padding:16px}}
+    @media (max-width:560px){.grid-3{grid-template-columns:1fr}.nav-hide{display:none}.profile svg{width:86px;height:86px}}
+
+    /* skill bars */
+    .skill{margin:8px 0}
+    .bar{height:10px;background:rgba(255,255,255,0.03);border-radius:8px;position:relative}
+    .bar > span{position:absolute;left:0;top:0;bottom:0;border-radius:8px;background:linear-gradient(90deg,var(--accent),#7c3aed)}
+
+    /* modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);z-index:60}
+    .modal.open{display:flex}
+    .modal .dialog{width:min(760px,96%);background:#071226;padding:18px;border-radius:12px}
+
+    /* small touches */
+    .top-row{display:flex;gap:10px;align-items:center}
+    .dark-toggle{padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);cursor:pointer}
+
+    /* project thumbnails placeholder */
+    .thumb{height:120px;border-radius:8px;background:linear-gradient(135deg,#07293a, #04162b);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+
+    /* contact */
+    form .row{display:flex;gap:10px}
+    form input,form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#eaf1ff}
+    form button{margin-top:8px}
+
+    /* subtle animations */
+    .fade-up{transform:translateY(8px);opacity:0;transition:all 600ms cubic-bezier(.2,.9,.2,1)}
+    .fade-up.show{transform:none;opacity:1}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">AG</div>
+        <div>
+          <h1>Abhishek Gaikwad</h1>
+          <div style="font-size:12px;color:var(--muted)">Mechanical Design Engineer — SolidWorks · CATIA · CAD · Simulation</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <button class="dark-toggle" id="toggleDark">Toggle</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="card intro">
+          <h2>Hello — I'm Abhishek</h2>
+          <p>I design mechanical systems, enclosures, and sheet-metal parts. I convert concepts into manufacturable CAD models and generate drawings for production. I enjoy solving problems using CAD + simulation.</p>
+
+          <div class="top-row">
+            <div class="chip">SolidWorks</div>
+            <div class="chip">CATIA</div>
+            <div class="chip">ANSYS</div>
+            <div class="chip">DFM</div>
+          </div>
+
+          <div class="cta">
+            <button class="btn" id="viewWork">View Projects</button>
+            <button class="btn ghost" id="downloadResume">Download Resume</button>
+          </div>
+
+          <div style="margin-top:16px;color:var(--muted);font-size:14px">Quick highlights</div>
+          <ul style="color:var(--muted);margin:8px 0 0 18px">
+            <li>End-to-end product design — 3D CAD → Drawing → DFM</li>
+            <li>Sheet metal, plastic enclosures, mechanism design</li>
+            <li>Worked solo as mechanical design lead in a product firm</li>
+          </ul>
+        </div>
+
+        <aside class="card avatar">
+          <div class="profile">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+              </defs>
+              <rect width="160" height="160" rx="18" fill="#071226"/>
+              <g transform="translate(20,18)">
+                <circle cx="50" cy="44" r="30" fill="url(#g1)"/>
+                <rect x="6" y="86" width="88" height="36" rx="8" fill="#081226" stroke="#0a1230"/>
+                <text x="50" y="56" text-anchor="middle" font-size="22" fill="#071226" font-weight="700">AG</text>
+              </g>
+            </svg>
+            <h3>Abhishek Gaikwad</h3>
+            <p>Mechanical Design · CAD · Simulation</p>
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <a class="chip" href="#projects">Projects</a>
+              <a class="chip" href="#contact">Hire</a>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about">
+        <div class="card fade-up" id="aboutCard">
+          <h3>About</h3>
+          <p style="color:var(--muted)">I'm a mechatronics-trained mechanical design engineer focused on producing CAD models and drawings that are ready for manufacturing. I specialize in sheet metal, plastic enclosures, and mechanisms. I document designs with GD&amp;T and tolerance stacks, run simple FEA for validation, and prepare BOMs for production.</p>
+          <div style="display:flex;gap:14px;margin-top:12px;flex-wrap:wrap">
+            <div style="min-width:160px">
+              <div style="font-size:12px;color:var(--muted)">Experience</div>
+              <div style="font-weight:700">Sole mechanical design expert — product firm</div>
+            </div>
+            <div style="min-width:160px">
+              <div style="font-size:12px;color:var(--muted)">Tools</div>
+              <div style="font-weight:700">SolidWorks, CATIA, AutoCAD, ANSYS</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h3 style="margin-top:18px">Projects</h3>
+        <div class="grid-3">
+          <article class="project-card card" tabindex="0" data-title="Autonomous Navigation Robot" data-desc="Designed chassis, mounts and obstacle-avoidance mechanism using SolidWorks. Manufactured chassis and integrated sensors.">
+            <div class="thumb">Robot Chassis Preview</div>
+            <h4>Autonomous Navigation Robot</h4>
+            <p style="color:var(--muted);font-size:13px">Complete design: chassis, mounts, obstacle avoidance, and manufacturing-ready drawings.</p>
+            <div style="margin-top:10px"><button class="btn ghost open-project">View</button></div>
+          </article>
+
+          <article class="project-card card" tabindex="0" data-title="Aluminium Ravan Sword (Concept)" data-desc="Concept modelling in SolidWorks, material selection and manufacturing plan for aluminum replica.">
+            <div class="thumb">Sword Concept</div>
+            <h4>Ravan Sword — Concept</h4>
+            <p style="color:var(--muted);font-size:13px">Organic modelling + sheet metal mounts. Planning to manufacture in aluminum.</p>
+            <div style="margin-top:10px"><button class="btn ghost open-project">View</button></div>
+          </article>
+
+          <article class="project-card card" tabindex="0" data-title="Enclosure — Plastic & Silicone" data-desc="Designed plastic & silicone rubber enclosure from concept to DFM-ready drawings and BOM.">
+            <div class="thumb">Enclosure Design</div>
+            <h4>Plastic & Silicone Enclosure</h4>
+            <p style="color:var(--muted);font-size:13px">Design for injection molding and silicone seals for IP protection.</p>
+            <div style="margin-top:10px"><button class="btn ghost open-project">View</button></div>
+          </article>
+        </div>
+
+        <div style="margin-top:14px;display:flex;gap:10px">
+          <button class="btn" id="moreProjects">More Projects</button>
+          <button class="btn ghost" id="projectPDF">Export Project Sheet</button>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h3 style="margin-top:18px">Skills</h3>
+        <div class="card">
+          <div style="display:flex;gap:18px;flex-wrap:wrap">
+            <div style="flex:1;min-width:220px">
+              <h4>CAD & Design</h4>
+              <div class="skill">SolidWorks <div class="bar" aria-hidden><span style="width:92%"></span></div></div>
+              <div class="skill">CATIA <div class="bar" aria-hidden><span style="width:78%"></span></div></div>
+              <div class="skill">AutoCAD <div class="bar" aria-hidden><span style="width:80%"></span></div></div>
+            </div>
+            <div style="flex:1;min-width:220px">
+              <h4>Engineering</h4>
+              <div class="skill">DFM & GD&amp;T <div class="bar" aria-hidden><span style="width:86%"></span></div></div>
+              <div class="skill">Tolerance Analysis <div class="bar" aria-hidden><span style="width:74%"></span></div></div>
+              <div class="skill">FEA (ANSYS) <div class="bar" aria-hidden><span style="width:68%"></span></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h3 style="margin-top:18px">Contact</h3>
+        <div class="card">
+          <form id="contactForm">
+            <div class="row">
+              <input type="text" id="name" placeholder="Your name" required />
+              <input type="email" id="email" placeholder="Your email" required />
+            </div>
+            <div style="margin-top:8px">
+              <textarea id="message" placeholder="Describe your project or inquiry" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+
+          <div style="margin-top:16px;color:var(--muted)">Or email: <a href="mailto:abhishek@example.com" style="color:var(--accent);text-decoration:none">abhishek@example.com</a></div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> Abhishek Gaikwad — Built with ❤️ • <span style="color:var(--muted)">Replace content & images with your files</span>
+    </footer>
+  </div>
+
+  <!-- project modal -->
+  <div class="modal" id="modal">
+    <div class="dialog card">
+      <button id="closeModal" style="float:right" class="btn ghost">Close</button>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc" style="color:var(--muted)"></p>
+      <div style="margin-top:12px">
+        <button class="btn" id="downloadProject">Download Drawings</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // simple interactivity
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('viewWork').addEventListener('click', ()=>location.href='#projects');
+
+    // dark toggle (simple class change)
+    const toggle = document.getElementById('toggleDark');
+    toggle.addEventListener('click', ()=>{
+      const root = document.documentElement;
+      if(root.style.getPropertyValue('--bg') === ''){
+        // toggle by inverting colors (simple)
+      }
+      document.body.classList.toggle('dark-mode');
+      if(document.body.classList.contains('dark-mode')){
+        document.body.style.background = 'linear-gradient(180deg,#f7fafc 0%, #e6eef8 60%)';
+        document.body.style.color = '#071022';
+      } else {
+        document.body.style.background = 'linear-gradient(180deg,#071022 0%, #07172a 60%)';
+        document.body.style.color = '#e6eef8';
+      }
+    });
+
+    // project modal open
+    document.querySelectorAll('.open-project').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        const card = e.target.closest('.project-card');
+        const title = card.dataset.title || 'Project';
+        const desc = card.dataset.desc || '';
+        document.getElementById('modalTitle').textContent = title;
+        document.getElementById('modalDesc').textContent = desc;
+        document.getElementById('modal').classList.add('open');
+      });
+    });
+    document.getElementById('closeModal').addEventListener('click', ()=>document.getElementById('modal').classList.remove('open'));
+
+    // contact form (fake submit)
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      if(!name||!email||!msg){alert('Please complete the form');return}
+      // create mailto for real behaviour
+      const mailto = `mailto:abhishek@example.com?subject=${encodeURIComponent('Portfolio inquiry from '+name)}&body=${encodeURIComponent(msg+'\n\nContact: '+email)}`;
+      window.location.href = mailto;
+    });
+
+    // fade-up reveal
+    window.addEventListener('load', ()=>{setTimeout(()=>document.getElementById('aboutCard').classList.add('show'),120)});
+
+    // download resume button example
+    document.getElementById('downloadResume').addEventListener('click', ()=>{
+      // Replace the blob creation with your actual resume file or link
+      const txt = 'Resume for Abhishek - replace with PDF content or change to actual link.';
+      const blob = new Blob([txt],{type:'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'Abhishek_Gaikwad_Resume.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('projectPDF').addEventListener('click', ()=>{
+      alert('This will export a project sheet. Replace with real implementation (server-side or client HTML->PDF library).');
+    });
+
+    // accessibility: keyboard open when card focused + Enter
+    document.querySelectorAll('.project-card').forEach(card=>{
+      card.addEventListener('keydown', (e)=>{if(e.key==='Enter'){card.querySelector('.open-project').click()}});
+    });
+
+  </script>
+</body>
+</html>
